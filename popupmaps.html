@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>water bodies in Kenya</title>
+	<link rel="stylesheet" href="style.css">
+<head>
+<body>
+<header>
+<h1> water bodies in Kenya</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About Rachael</a></li>
+				
+				
+				<li><a href="popupmaps.html">custom popups in map</a></li>
+				<li><a href="contact.html">contacts</a></li>
+               
+			</ul>
+		</nav>
+<head>
+<title>water bodies in Kenya</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+	<style>
+		#mapid {
+			height: 500px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			margin: 10px;
+		}
+
+		#map-title {
+			background-color: #fff;
+			border: 2px solid #ccc;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+            margin: 0px;
+			padding: 10px;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="map-container">
+		<div id="map-title">water bodies in Kenya</div>
+		<div id="mapid"></div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script>
+		// create a Leaflet map centered at Nairobi, Kenya
+		var map = L.map('mapid').setView([-1.2921, 36.8219], 7);
+
+		// add an OpenStreetMap tile layer
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+		}).addTo(map);
+// define an array of water bodies in Kenya with their names and locations
+var waterBodies = [
+  {
+    name: "Lake Victoria",
+    latitude: -0.665,
+    longitude: 33.14,
+    area: "68,800 km²",
+    altitude: "1,134 m",
+    waterType: "Freshwater"
+  },
+  {
+    name: "Lake Turkana",
+    latitude: 3.032,
+    longitude: 35.693,
+    area: "6,405 km²",
+    altitude: "360 m",
+    waterType: "Salty Water"
+  },
+  {
+    name: "Lake Naivasha",
+    latitude: -0.787,
+    longitude: 36.44,
+    area: "139 km²",
+    altitude: "1,884 m",
+    waterType: "Freshwater"
+  },
+  {
+    name: "Lake Baringo",
+    latitude: 0.667,
+    longitude: 36.067,
+    area: "130 km²",
+    altitude: "970 m",
+    waterType: "Salty Water"
+  },
+  {
+    name: "Lake Nakuru",
+    latitude: -0.303,
+    longitude: 36.072,
+    area: "62 km²",
+    altitude: "1,754 m",
+    waterType: "Soda Lake"
+  },
+];
+
+// add markers to the map for each water body
+for (var i = 0; i < waterBodies.length; i++) {
+  var waterBody = waterBodies[i];
+  var marker = L.marker([waterBody.latitude, waterBody.longitude]).addTo(map);
+
+  // define a popup for each marker with the water body name and type
+  var popupContent = "<b>" + waterBody.name + "</b><br>" +
+                     "Type: " + waterBody.waterType;
+  marker.bindPopup(popupContent);
+}
+
+	</script>
+</body>
+<footer>
+		<p>&copy;Rachael</p>
+</html>
